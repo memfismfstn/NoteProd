@@ -1,3 +1,4 @@
+"""Точка входа веб-приложения: создание FastAPI-приложения и обработка ошибок."""
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
@@ -12,4 +13,5 @@ app.include_router(notes.router)\
 
 @app.exception_handler(NoteNotFound)
 def note_not_found_handler(request: Request, exc: NoteNotFound):
+    """Преобразует ``NoteNotFound`` в HTTP 404"""
     return JSONResponse(status_code=404, content={"detail": str(exc)})
