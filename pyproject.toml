@@ -1,0 +1,48 @@
+[project]
+name = "aegis"
+version = "0.1.0"
+description = "test fastapi project"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[all]>=0.162.0",
+    "ruff>=0.17.3",
+]
+
+[project.scripts]
+aegis = "aegis:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",  
+    "F",    
+    "I",    
+    "B",    
+    "UP",   
+    "N",  
+    "SIM",  
+    "C4",
+    "RUF",
+]
+
+ignore = [
+    "B008",
+    "N818"
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["aegis"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
